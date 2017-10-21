@@ -9,6 +9,12 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'Gadgeothek/gradlew build'
+                sh 'Gadgeothek/gradlew lint'
+            }
+            post {
+                always {
+                    archiveArtifacts 'Gadgeothek/app/build/outputs/apk/*.apk'
+                }
             }
         }
 
