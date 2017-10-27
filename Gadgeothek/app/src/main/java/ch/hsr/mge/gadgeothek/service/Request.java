@@ -28,8 +28,10 @@ class Request<T> extends AsyncTask<Void, Void, Pair<String, T>> {
     private final @Nullable HashMap<String, String> headers;
     private final @Nullable HashMap<String, String> body;
     private final Callback<T> callback;
+    private final OkHttpClient httpClient;
 
-    Request(HttpVerb type, String url, Type typeClass, @Nullable HashMap<String, String> headers, @Nullable HashMap<String, String> body, Callback<T> callback) {
+    Request(OkHttpClient httpClient, HttpVerb type, String url, Type typeClass, @Nullable HashMap<String, String> headers, @Nullable HashMap<String, String> body, Callback<T> callback) {
+        this.httpClient = httpClient;
         this.requestKind = type;
         this.url = url;
         this.resultType = typeClass;
@@ -40,8 +42,6 @@ class Request<T> extends AsyncTask<Void, Void, Pair<String, T>> {
 
     protected Pair<String, T> doInBackground(Void... unused) {
         Log.d(TAG, "Requesting " + url);
-
-        OkHttpClient client = new OkHttpClient();
 
         String responseBody = "";
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
@@ -72,7 +72,7 @@ class Request<T> extends AsyncTask<Void, Void, Pair<String, T>> {
                     break;
             }
 
-            Response response = client.newCall(request).execute();
+            Response response = httpClient.newCall(request).execute();
 
             responseBody = response.body().string();
 

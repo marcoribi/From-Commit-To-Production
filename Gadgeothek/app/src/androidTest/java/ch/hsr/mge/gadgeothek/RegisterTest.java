@@ -3,7 +3,9 @@ package ch.hsr.mge.gadgeothek;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import ch.hsr.mge.gadgeothek.http.MockedHttpClient;
 import ch.hsr.mge.gadgeothek.ui.RegisterActivity;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,11 +19,20 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 @LargeTest
 public class RegisterTest {
 
+    private MockedHttpClient mockedHttpClient;
+
+    @Before
+    public void setUp() {
+        mockedHttpClient = GadgeothekTestApplication.mockedHttpClient;
+    }
+
+
     @Rule
     public ActivityTestRule<RegisterActivity> activityTestRule = new ActivityTestRule<>(RegisterActivity.class);
 
     @Test
-    public void showsRegisterActivity() {
+    public void showsRegisterActivity() throws InterruptedException {
+        // This sleep is needed because SplashActivity uses postDelayed with a delay of 2000 ms
         onView(withId(R.id.registerButton)).check(matches(isDisplayed()));
     }
 }
