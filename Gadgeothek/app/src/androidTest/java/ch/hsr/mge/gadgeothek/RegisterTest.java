@@ -3,7 +3,6 @@ package ch.hsr.mge.gadgeothek;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import ch.hsr.mge.gadgeothek.http.Endpoint;
 import ch.hsr.mge.gadgeothek.http.HttpProxy;
 import ch.hsr.mge.gadgeothek.ui.RegisterActivity;
 import org.junit.Before;
