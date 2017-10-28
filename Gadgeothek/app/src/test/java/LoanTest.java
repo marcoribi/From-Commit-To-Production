@@ -28,6 +28,6 @@ public class LoanTest {
 
         Loan loan = new Loan("1", gadget, calendar.getTime(), null);
 
-        Assert.assertThat(loan.isLent(), Is.is(false));
+        Assert.assertThat(loan.isLent(), Is.is(true));
     }
 }
