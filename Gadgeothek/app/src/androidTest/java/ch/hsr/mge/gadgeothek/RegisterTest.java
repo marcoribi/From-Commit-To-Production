@@ -17,6 +17,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static ch.hsr.mge.gadgeothek.http.Endpoint.get;
 import static ch.hsr.mge.gadgeothek.http.Endpoint.post;
 import static java.lang.String.valueOf;
 
@@ -46,6 +47,8 @@ public class RegisterTest {
         httpProxy.mockCall(post("/public/register"), "true");
         String loginToken = "{\"customerId\": \"1111\", \"securityToken\": \"myToken\" }";
         httpProxy.mockCall(post("/public/login"), loginToken);
+        httpProxy.mockCall(get("/public/loans"), "[]");
+        httpProxy.mockCall(get("/public/reservations"), "[]");
 
         onView(withId(R.id.name)).perform(typeText("Marco Ribi"));
         closeSoftKeyboard();
@@ -53,7 +56,7 @@ public class RegisterTest {
         closeSoftKeyboard();
         onView(withId(R.id.matrikelnr)).perform(typeText("1234568393"));
         closeSoftKeyboard();
-        onView(withId(R.id.password)).perform(typeText("abcde"));
+        onView(withId(R.id.password)).perform(typeText("abcde1"));
         closeSoftKeyboard();
         onView(withId(R.id.registerButton)).perform(click());
 
