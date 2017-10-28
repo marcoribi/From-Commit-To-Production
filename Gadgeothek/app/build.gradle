@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'ch.yvu.teststore'
+//apply plugin: 'ch.yvu.teststore'
 
 android {
     compileSdkVersion 25
@@ -51,11 +51,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-teststore {
-    host 'test-store.testing-knowhow.ch'
-    port  8080
-    testSuite '880882d8-ddf2-4c55-88f2-550e359a39e3'
-    revision System.properties['revision']
-    xmlReports ~/.*\/test-results\/TEST-.*\.xml/
-    incremental false
-}
+//teststore {
+//    host 'test-store.testing-knowhow.ch'
+//    port  8080
+//    testSuite '880882d8-ddf2-4c55-88f2-550e359a39e3'
+//    revision System.properties['revision']
+//    xmlReports ~/.*\/test-results\/test.*\/TEST-.*\.xml/
+//    incremental false
+//}
