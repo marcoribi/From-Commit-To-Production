@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 
 import ch.hsr.mge.gadgeothek.R;
+import ch.hsr.mge.gadgeothek.ui.login.LoginActivity;
 
 import static ch.hsr.mge.gadgeothek.GadgeothekApplication.libraryService;
 

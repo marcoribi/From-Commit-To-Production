@@ -1,4 +1,4 @@
-package ch.hsr.mge.gadgeothek.ui;
+package ch.hsr.mge.gadgeothek.ui.login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,8 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 
 import ch.hsr.mge.gadgeothek.R;
+import ch.hsr.mge.gadgeothek.ui.AbstractAuthenticationActivity;
+import ch.hsr.mge.gadgeothek.ui.RegisterActivity;
 
-public class LoginActivity extends AbstractAuthenticationActivity {
+public class LoginActivity extends AbstractAuthenticationActivity implements LoginContract.View {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
     private EditText emailView;
@@ -26,6 +28,8 @@ public class LoginActivity extends AbstractAuthenticationActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // LoginContract presenter = new LoginPresenter();
 
         // Set up the login form.
         emailView = (EditText) findViewById(R.id.email);

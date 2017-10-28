@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
     defaultConfig {
-        applicationId "ch.hsr.mge.gadgeothek"
+        applicationId "ch.hsr.mge.gadgeothek.marco"
         minSdkVersion 21
         //noinspection OldTargetApi
         targetSdkVersion 25

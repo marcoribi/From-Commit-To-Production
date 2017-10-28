@@ -18,11 +18,10 @@ import android.view.View;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import ch.hsr.mge.gadgeothek.GadgeothekApplication;
 import ch.hsr.mge.gadgeothek.R;
 import ch.hsr.mge.gadgeothek.service.Callback;
-import ch.hsr.mge.gadgeothek.service.LibraryService;
 import ch.hsr.mge.gadgeothek.ui.loans.LoansFragment;
+import ch.hsr.mge.gadgeothek.ui.login.LoginActivity;
 import ch.hsr.mge.gadgeothek.ui.reservations.NewReservationActivity;
 import ch.hsr.mge.gadgeothek.ui.reservations.ReservationsFragment;
 
