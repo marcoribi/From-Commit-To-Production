@@ -28,6 +28,11 @@ pipeline {
             steps {
                 sh 'cd Gadgeothek; ./gradlew test'
             }
+            post {
+                always {
+                    junit 'build/test-results/**/*.xml'
+                }
+            }
         }
 
         stage('Package') {
