@@ -11,7 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled = true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "ch.hsr.mge.gadgeothek.GadgeothekTestRunner"
     }
     buildTypes {
         release {
@@ -46,5 +46,6 @@ dependencies {
 
     androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.0'
     androidTestCompile 'com.android.support.test:runner:1.0.0'
+
     testCompile 'junit:junit:4.12'
 }
