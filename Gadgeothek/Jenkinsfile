@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ch Gadgeothek; ./gradlew clean'
+                sh 'cd Gadgeothek; ./gradlew clean'
                 sh 'cd Gadgeothek; ./gradlew build'
                 sh 'cd Gadgeothek; ./gradlew lint'
             }
@@ -16,6 +16,7 @@ pipeline {
                 always {
                     archiveArtifacts 'Gadgeothek/app/build/outputs/apk/*.apk'
                     junit allowEmptyResults: true, testResults: '**/build/test-results/**/*.xml'
+                    sh 'cd Gadgeothek; ./gradlew storeResults'
                 }
             }
         }
