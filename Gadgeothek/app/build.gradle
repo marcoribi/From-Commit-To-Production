@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'ch.yvu.teststore'
 
 android {
     compileSdkVersion 25
@@ -49,8 +50,6 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
-
-apply plugin: 'ch.yvu.teststore'
 
 teststore {
     host 'test-store.testing-knowhow.ch'
