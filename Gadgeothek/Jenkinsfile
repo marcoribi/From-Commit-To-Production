@@ -14,6 +14,7 @@ pipeline {
             post {
                 always {
                     archiveArtifacts 'Gadgeothek/app/build/outputs/apk/*.apk'
+                    junit '**/build/test-results/**/*.xml'
                 }
             }
         }
@@ -21,17 +22,6 @@ pipeline {
         stage('End2End Tests') {
             steps {
                 sh 'echo End2End Tests'
-            }
-        }
-
-        stage('Unit Tests') {
-            steps {
-                sh 'cd Gadgeothek; ./gradlew test'
-            }
-            post {
-                always {
-                    junit '**/build/test-results/**/*.xml'
-                }
             }
         }
 
