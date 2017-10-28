@@ -24,6 +24,12 @@ pipeline {
             }
         }
 
+        stage('Unit Tests') {
+            steps {
+                sh 'cd Gadgeothek; ./gradlew test'
+            }
+        }
+
         stage('Package') {
             steps {
                 sh 'echo Package'
