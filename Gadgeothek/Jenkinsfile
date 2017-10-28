@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'ch Gadgeothek; ./gradlew clean'
                 sh 'cd Gadgeothek; ./gradlew build'
                 sh 'cd Gadgeothek; ./gradlew lint'
             }
