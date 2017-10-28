@@ -29,7 +29,7 @@ public class LoginActivity extends AbstractAuthenticationActivity implements Log
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // LoginContract presenter = new LoginPresenter();
+        LoginContract.UserActionsListener presenter = new LoginPresenter(this);
 
         // Set up the login form.
         emailView = (EditText) findViewById(R.id.email);
@@ -61,6 +61,9 @@ public class LoginActivity extends AbstractAuthenticationActivity implements Log
      * errors are presented and no actual login attempt is made.
      */
     public void attemptLogin() {
+        // TODO: Hier wäre es alles rausnehmen und nur setEmailError in der activity haben und vom presenter diese view.setEmailError
+        // aufrufen. setEmailError müsste dann in der LoginActivity implementiert werden und ins Interface werfen.
+
 
         // Reset errors.
         emailView.setError(null);

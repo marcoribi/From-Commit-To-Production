@@ -5,7 +5,9 @@ package ch.hsr.mge.gadgeothek.ui.login;
  */
 
 public class LoginPresenter implements LoginContract.UserActionsListener {
-    public void LoginPresenter() {
+    private LoginContract.View view;
 
+    public LoginPresenter(LoginContract.View view) {
+        this.view = view;
     }
 }
