@@ -30,6 +30,12 @@ pipeline {
             steps {
                 sh './Gadgeothek/scripts/package.sh'
             }
+
+            post {
+                success {
+                    archiveArtifacts 'Gadgeothek/app/build/outputs/apk/Gadgeothek.apk'
+                }
+            }
         }
     }
     post {
