@@ -7,10 +7,13 @@ package ch.hsr.mge.gadgeothek.ui.login;
 public interface LoginContract {
 
     interface View {
-
+        void setPasswordError();
+        void setEmailError();
+        void setFocusToPasswordView();
+        void setFocusToEmailView();
     }
 
     interface UserActionsListener {
-
+        boolean isInputValid(String email, String password);
     }
 }

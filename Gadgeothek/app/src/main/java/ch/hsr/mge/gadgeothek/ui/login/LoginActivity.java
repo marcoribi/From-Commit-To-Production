@@ -20,6 +20,8 @@ public class LoginActivity extends AbstractAuthenticationActivity implements Log
     private EditText passwordView;
     private View progressView;
     private View loginFormView;
+    private View focusView;
+    private LoginContract.UserActionsListener presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class LoginActivity extends AbstractAuthenticationActivity implements Log
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        LoginContract.UserActionsListener presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this);
 
         // Set up the login form.
         emailView = (EditText) findViewById(R.id.email);
@@ -61,34 +63,17 @@ public class LoginActivity extends AbstractAuthenticationActivity implements Log
      * errors are presented and no actual login attempt is made.
      */
     public void attemptLogin() {
-        // TODO: Hier wäre es alles rausnehmen und nur setEmailError in der activity haben und vom presenter diese view.setEmailError
-        // aufrufen. setEmailError müsste dann in der LoginActivity implementiert werden und ins Interface werfen.
-
-
         // Reset errors.
-        emailView.setError(null);
-        passwordView.setError(null);
+        resetLoginFields();
 
         // Store values at the time of the login attempt.
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
 
         boolean cancel = false;
-        View focusView = null;
 
-        // Check for a valid password
-        if (TextUtils.isEmpty(password)) {
-            passwordView.setError(getString(R.string.error_field_required));
-            focusView = passwordView;
-            cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            emailView.setError(getString(R.string.error_field_required));
-            focusView = emailView;
-            cancel = true;
-        }
+        // Validations
+        cancel = presenter.isInputValid(email, password);
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -101,6 +86,31 @@ public class LoginActivity extends AbstractAuthenticationActivity implements Log
             showProgress(loginFormView, progressView, true);
             login(email, password, false);
         }
+    }
+
+    @Override
+    public void setFocusToPasswordView() {
+        this.focusView = this.passwordView;
+    }
+
+    @Override
+    public void setFocusToEmailView() {
+        this.focusView = this.emailView;
+    }
+
+    @Override
+    public void setEmailError() {
+        emailView.setError(getString(R.string.error_field_required));
+    }
+
+    @Override
+    public void setPasswordError() {
+        passwordView.setError(getString(R.string.error_field_required));
+    }
+
+    public void resetLoginFields() {
+        emailView.setError(null);
+        passwordView.setError(null);
     }
 
     protected void loginSucceeded(boolean isAutoLogin) {
