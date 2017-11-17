@@ -28,9 +28,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                sh 'cd Gadgeothek; ./gradlew assembleRelease'
-                sh 'cd Gadgeothek; zipalign -v -p 4 app/build/outputs/apk/app-full-release-unsigned.apk app/build/outputs/apk/my-app-unsigned-aligned.apk'
-                sh 'cd Gadgeothek; apksigner sign --ks-pass file:${HOME}/keystore-pass --ks ${HOME}/gadgeothek.keystore --out my-app-release.apk app/build/outputs/apk/my-app-unsigned-aligned.apk'
+                sh './Gadgeothek/scripts/package.sh'
             }
         }
     }
