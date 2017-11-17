@@ -12,9 +12,9 @@ unsigned_aligned_apk="${root}/app/build/outputs/apk/app-release-unsigned-aligned
 keystore="${HOME}/gadgeothek.keystore"
 keystore_pass="${HOME}/keystore-pass"
 
-version_code=$(git rev-list --all --count)
+current_version_code=$(git rev-list --all --count)
 
-(cd "${root}"; ./gradlew -PversionCode=${version_code} clean assembleRelease)
+(cd "${root}"; ./gradlew -PversionCode=${current_version_code} clean assembleRelease)
 
 apk_name="Gadgeothek"
 
