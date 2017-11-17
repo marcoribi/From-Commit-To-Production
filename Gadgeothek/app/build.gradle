@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'ch.yvu.teststore'
+def androidVersionCode = project.hasProperty("versionCode") ? versionCode as Integer : 42
 
 android {
     compileSdkVersion 25
