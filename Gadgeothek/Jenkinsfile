@@ -22,13 +22,15 @@ pipeline {
 
         stage('End2End Tests') {
             steps {
-                
+
             }
         }
 
         stage('Package') {
             steps {
-                sh 'echo Package'
+                sh 'cd Gadgeothek; ./gradlew assembleRelease'
+                sh 'cd Gadgeothek; zipalign -v -p 4 app/build/outputs/apk/app-full-release-unsigned.apk app/build/outputs/apk/my-app-unsigned-aligned.apk'
+                sh 'cd Gadgeothek; apksigner sign --keypass file:${HOME}/keystore-pass --ks ${HOME}/Gadgeothek.keystore --out my-app-release.apk my-app-unsigned-aligned.apk'
             }
         }
     }
