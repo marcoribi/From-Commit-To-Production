@@ -14,7 +14,7 @@ keystore_pass="${HOME}/keystore-pass"
 
 current_version_code=$(git rev-list --all --count)
 
-(cd "${root}"; ./gradlew -PversionCode=${current_version_code} clean assembleRelease)
+(cd "${root}"; ./gradlew -Pversion=${current_version_code} clean assembleRelease)
 
 apk_name="Gadgeothek"
 
